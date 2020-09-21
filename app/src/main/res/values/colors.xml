@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#6200EE</color>
+    <color name="colorPrimaryDark">#3700B3</color>
+    <color name="colorAccent">#03DAC5</color>
+
+    <color name="colorTextBlackHigh">#DE000000</color>
+    <color name="colorTextBlackDisable">#61000000</color>
+    <color name="colorTextWhiteHigh">#FFFFFFFF</color>
+    <color name="colorTextGreen">#ff00B638</color>
+    <color name="colorTextBlackMedium">#8A000000</color>
+    <color name="colorTextRed">#f46566</color>
+    <color name="colorGrayEditText">#E1E1E1</color>
+    <color name="spoilerListBorder">#33000000</color>
+
+</resources>

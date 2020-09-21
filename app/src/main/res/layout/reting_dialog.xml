@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="16dp"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/rating_dialog_body_rate_linear_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:visibility="visible">
+
+        <ImageView
+            android:id="@+id/rating_dialog_body_rate_image_title_image_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/picture" />
+
+        <TextView
+            android:id="@+id/rating_dialog_body_rate_text_title_text_view"
+            style="@style/textBlackDisableSubtitle1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="20dp"
+            android:gravity="center"
+            android:text="@string/rating_dialog_text_body_rate_title_text_view" />
+
+        <RatingBar
+            android:id="@+id/rating_dialog_body_rate_ratingBar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginLeft="40dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="40dp"
+            android:numStars="5"
+            android:stepSize="1" />
+
+        <TextView
+            android:id="@+id/rating_dialog_body_rate_rate_text_vew"
+            style="@style/textBlackMediumBody2.Center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/rating_dialog_rate_1_to_5_text_view"
+            android:textColor="@color/colorTextRed"
+            android:textSize="20sp" />
+
+        <Button
+            android:id="@+id/rating_dialog_body_rate_evaluation_button"
+            style="@style/buttonMain"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="20dp"
+            android:text="@string/rating_dialog_text_body_rate_button_evaluation_button" />
+
+        <TextView
+            android:id="@+id/rating_dialog_body_rate_evaluation_later_text_view"
+            style="@style/textBlackMediumBody2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:gravity="center_horizontal"
+            android:text="@string/rating_dialog_text_body_rate_button_evaluation_later_text_view"
+            android:textColor="@color/colorTextGreen" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/rating_dialog_review_linear_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <TextView
+            android:id="@+id/rating_dialog_body_review_text_title_text_view"
+            style="@style/textBlackDisableSubtitle1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="20dp"
+            android:gravity="center"
+            android:text="@string/rating_dialog_text_body_review_title_text_view" />
+
+        <EditText
+            android:id="@+id/rating_dialog_body_review_typing_text_edit_view"
+            style="@style/editText"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="16dp"
+            android:hint="@string/rating_dialog_text_hint_body_review"
+            android:padding="8dp" />
+
+        <Button
+            android:id="@+id/rating_dialog_body_review_evaluation_button"
+            style="@style/buttonMain"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="20dp"
+            android:text="@string/rating_dialog_text_body_review_button_send_button" />
+
+        <TextView
+            android:id="@+id/rating_dialog_body_review_evaluation_later_text_view"
+            style="@style/textBlackHighBody1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:gravity="center_horizontal"
+            android:text="@string/rating_dialog_text_body_review_button_close_button"
+            android:textColor="@color/colorTextGreen" />
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/rating_dialog_thanks_layout_linear_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <ImageView
+            android:id="@+id/rating_dialog_body_thanks_image_title_image_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/avatar" />
+
+        <TextView
+            style="@style/TextAppearance.AppCompat.Title"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="16dp"
+            android:text="@string/rating_dialog_text_body_thanks_title_text_view" />
+
+        <TextView
+            style="@style/textBlackHighBody2"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="16dp"
+            android:text="@string/rating_dialog_text_body_thanks_body_text_view" />
+
+        <TextView
+            android:id="@+id/rating_dialog_body_thanks_close_button"
+            style="@style/textBlackMediumBody2"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="16dp"
+            android:gravity="right"
+            android:textSize="20sp"
+            android:text="@string/rating_dialog_text_body_review_button_close_button"
+            android:textColor="@color/colorTextGreen" />
+
+    </LinearLayout>
+
+</LinearLayout>
