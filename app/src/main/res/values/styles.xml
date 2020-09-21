@@ -39,7 +39,7 @@
     <!--Стили EditTexts-->
     <style name="editText" parent="textBlackDisableSubtitle1">
         <item name="android:height">216dp</item>
-        <item name="android:background">@drawable/edit_text_line</item>
+        <item name="android:background">@drawable/edit_text</item>
         <item name="textAllCaps">false</item>
         <item name="android:gravity">top</item>
         <item name="android:clickable">true</item>
