@@ -1,27 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/colorGrayEditText"
     android:orientation="vertical"
     tools:context=".MainActivity">
 
-
-    <EditText
-        style="@style/editText"
-        android:layout_width="match_parent"
+    <Button
+        android:id="@+id/main_activity_button_ration_dialog"
+        style="@style/buttonMain"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginRight="10dp"
-        android:hint="@string/rating_dialog_text_hint_body_review" />
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:text="Ration Dialog" />
 
-    <ImageView
-        android:layout_marginLeft="19dp"
-        android:layout_marginRight="19dp"
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="@color/colorTextBlackDisable" />
+    <Button
+        android:id="@+id/main_activity_button_ration_dialog_fragment"
+        style="@style/buttonMain"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/main_activity_button_ration_dialog"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:text="Ration Dialog Fragment" />
 
-</LinearLayout>
+    <RelativeLayout
+        android:id="@+id/main_activity_fragment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true" />
+
+</RelativeLayout>

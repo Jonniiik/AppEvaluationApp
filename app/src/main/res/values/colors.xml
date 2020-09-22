@@ -12,5 +12,6 @@
     <color name="colorTextRed">#f46566</color>
     <color name="colorGrayEditText">#E1E1E1</color>
     <color name="spoilerListBorder">#33000000</color>
+    <color name="backgroundWhite">#FFFFFF</color>
 
 </resources>

@@ -80,4 +80,16 @@
         <item name="android:gravity">left</item>
     </style>
 
+    <!--Стиль RatingBar-->
+    <style name="RatingBarGreen" parent="Theme.AppCompat">
+        <item name="colorControlNormal">@color/colorTextBlackDisable</item>
+        <item name="colorControlActivated">@color/colorTextGreen</item>
+    </style>
+
+    <!--Стиль для AlertDialog-->
+    <style name="AlertDialog" parent="Base.Theme.AppCompat.Dialog.Alert">
+        <item name="android:background">@color/backgroundWhite</item>
+        <item name="colorAccent">#0000ff</item>
+    </style>
+
 </resources>

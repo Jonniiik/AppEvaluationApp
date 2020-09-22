@@ -2,8 +2,9 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:orientation="vertical"
     android:padding="16dp"
-    android:orientation="vertical">
+    android:background="@drawable/rating_dialog">
 
     <LinearLayout
         android:id="@+id/rating_dialog_body_rate_linear_layout"
@@ -31,23 +32,25 @@
 
         <RatingBar
             android:id="@+id/rating_dialog_body_rate_ratingBar"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginLeft="40dp"
             android:layout_marginTop="20dp"
             android:layout_marginRight="40dp"
+            android:theme="@style/RatingBarGreen"
             android:numStars="5"
             android:stepSize="1" />
 
         <TextView
-            android:id="@+id/rating_dialog_body_rate_rate_text_vew"
+            android:id="@+id/rating_dialog_body_rate_score_text_vew"
             style="@style/textBlackMediumBody2.Center"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/rating_dialog_rate_1_to_5_text_view"
             android:textColor="@color/colorTextRed"
-            android:textSize="20sp" />
+            android:textSize="20sp"
+            android:visibility="gone"/>
 
         <Button
             android:id="@+id/rating_dialog_body_rate_evaluation_button"
@@ -58,7 +61,7 @@
             android:text="@string/rating_dialog_text_body_rate_button_evaluation_button" />
 
         <TextView
-            android:id="@+id/rating_dialog_body_rate_evaluation_later_text_view"
+            android:id="@+id/rating_dialog_body_rate_evaluation_later_button_text_view"
             style="@style/textBlackMediumBody2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -69,7 +72,7 @@
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/rating_dialog_review_linear_layout"
+        android:id="@+id/rating_dialog_body_review_linear_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
@@ -85,7 +88,7 @@
             android:text="@string/rating_dialog_text_body_review_title_text_view" />
 
         <EditText
-            android:id="@+id/rating_dialog_body_review_typing_text_edit_view"
+            android:id="@+id/rating_dialog_body_review_typing_text_edit_text"
             style="@style/editText"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -94,7 +97,7 @@
             android:padding="8dp" />
 
         <Button
-            android:id="@+id/rating_dialog_body_review_evaluation_button"
+            android:id="@+id/rating_dialog_body_review_send_evaluation_button"
             style="@style/buttonMain"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -102,7 +105,7 @@
             android:text="@string/rating_dialog_text_body_review_button_send_button" />
 
         <TextView
-            android:id="@+id/rating_dialog_body_review_evaluation_later_text_view"
+            android:id="@+id/rating_dialog_body_review_close_window_text_view"
             style="@style/textBlackHighBody1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -118,6 +121,8 @@
         android:id="@+id/rating_dialog_thanks_layout_linear_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
         android:orientation="vertical"
         android:visibility="gone">
 
@@ -137,22 +142,23 @@
             android:text="@string/rating_dialog_text_body_thanks_title_text_view" />
 
         <TextView
-            style="@style/textBlackHighBody2"
+            style="@style/textBlackMediumBody2"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginTop="16dp"
+            android:textSize="16sp"
             android:text="@string/rating_dialog_text_body_thanks_body_text_view" />
 
         <TextView
-            android:id="@+id/rating_dialog_body_thanks_close_button"
+            android:id="@+id/rating_dialog_body_thanks_close_text_view"
             style="@style/textBlackMediumBody2"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginTop="16dp"
             android:gravity="right"
-            android:textSize="20sp"
             android:text="@string/rating_dialog_text_body_review_button_close_button"
-            android:textColor="@color/colorTextGreen" />
+            android:textColor="@color/colorTextGreen"
+            android:textSize="20sp" />
 
     </LinearLayout>
 
