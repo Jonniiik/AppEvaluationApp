@@ -8,7 +8,6 @@ import android.view.View
 import android.widget.*
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.DialogFragment
-import com.example.appevaluation.RatingDialogDialogFragment.States
 
 
 /**
@@ -143,9 +142,8 @@ class RatingDialogDialogFragment : DialogFragment() {
         tvCloseThanksWindows.setOnClickListener { dialog?.cancel() }
 
 
-        if (builder != null) {
+        if (builder != null)
             return builder.create()
-        }
         return super.onCreateDialog(savedInstanceState)
     }
 }
