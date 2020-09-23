@@ -93,7 +93,8 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginTop="16dp"
-            android:hint="@string/rating_dialog_text_hint_body_review"
+            android:maxLength="2000"
+            android:hint="@string/rating_dialog_text_hint_body_review_edit_text"
             android:padding="8dp" />
 
         <Button

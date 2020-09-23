@@ -7,7 +7,7 @@
     <string name="rating_dialog_rate_1_to_5_text_view">Поставьте оценку от 1 до 5</string>
     <string name="rating_dialog_text_body_rate_button_evaluation_later_text_view">Оценить позже</string>
     <string name="rating_dialog_text_body_review_button_close_button">Закрыть</string>
-    <string name="rating_dialog_text_hint_body_review">Напишите свои пожелания</string>
+    <string name="rating_dialog_text_hint_body_review_edit_text">Напишите свои пожелания</string>
     <string name="rating_dialog_text_body_thanks_title_text_view">Спасибо!</string>
     <string name="rating_dialog_text_body_thanks_body_text_view">Мы передали ваши пожелания в отдел разработки.</string>
 
