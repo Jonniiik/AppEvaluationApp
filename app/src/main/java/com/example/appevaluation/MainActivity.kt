@@ -4,6 +4,9 @@ package com.example.appevaluation
 import android.os.Bundle
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.FragmentTransaction
 
 lateinit var button: Button
 
@@ -14,9 +17,27 @@ class MainActivity : AppCompatActivity() {
         button = findViewById(R.id.main_activity_button_ration_dialog_fragment)
 
         button.setOnClickListener {
-            val dialog = RatingDialogDialogFragment()
-            val manager = supportFragmentManager
-            dialog.show(manager, "dialog")
+            openRatingDialog()
         }
+    }
+
+    /**
+     * Find a good way, how i can open Fragment or DialogFragment on Kotlin
+     */
+    private fun openRatingDialog(){
+        val dialog = RatingDialogDialogFragment()
+        val manager = supportFragmentManager
+        manager.inTransaction {
+            addToBackStack(null)
+            val prev: Fragment? = supportFragmentManager.findFragmentByTag(RatingDialogDialogFragment.RATING_DIALOG_TAG)
+            if (prev != null) remove(prev)
+        }
+        dialog.show(manager, RatingDialogDialogFragment.RATING_DIALOG_TAG)
+    }
+
+    private inline fun FragmentManager.inTransaction(func: FragmentTransaction.() -> Unit) {
+        val fragmentTransaction = beginTransaction()
+        fragmentTransaction.func()
+        fragmentTransaction.commit()
     }
 }

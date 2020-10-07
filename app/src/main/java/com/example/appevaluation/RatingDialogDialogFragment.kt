@@ -6,18 +6,26 @@ import android.net.Uri
 import android.os.Bundle
 import android.view.View
 import android.widget.*
+import androidx.annotation.Nullable
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.DialogFragment
 
 
 /**
- * Диалоговое окно с рейтингом приложения
- * Если пользователь поставил от 1 до 3 то мы выводим окно с отзывом [States.REVIEW_BODY]
- * Усли пользователь стаит 4 или 5 отправляем его оценку [States.THANKS_BODY]
+ * Dialog window with rating app
+ * if we put 1 to 3, run window with review [State.REVIEW_BODY]
+ * after [State.REVIEW_BODY] we open [State.THANKS_BODY]
+ * if we put 4 to 5, run GooglePlay
  */
 class RatingDialogDialogFragment : DialogFragment() {
+
+    companion object {
+        @JvmStatic
+        val RATING_DIALOG_TAG = "RATING_DIALOG_TAG"
+    }
+
     /**
-     * Слой для тела оценки
+     * layout with Rating
      */
     private lateinit var llRateBody: LinearLayout //rating_dialog_body_rate_linear_layout
     private lateinit var ratingBar: RatingBar //rating_dialog_body_rate_ratingBar
@@ -26,7 +34,7 @@ class RatingDialogDialogFragment : DialogFragment() {
     private lateinit var tvEvaluationLate: TextView //rating_dialog_body_rate_evaluation_later_button_text_view
 
     /**
-     * Слой для тела ввода отзыва
+     * layout with Review
      */
     private lateinit var llReviewBody: LinearLayout //rating_dialog_body_review_linear_layout
     private lateinit var etReviewTyping: EditText //rating_dialog_body_review_typing_text_edit_text
@@ -34,32 +42,32 @@ class RatingDialogDialogFragment : DialogFragment() {
     private lateinit var tvCloseReviewWindow: TextView //rating_dialog_body_review_close_window_text_view
 
     /**
-     * Слой Спасибо
+     * layout thanks
      */
     private lateinit var llThanksBody: LinearLayout //rating_dialog_thanks_layout_linear_layout
     private lateinit var tvCloseThanksWindows: TextView //rating_dialog_body_thanks_close_text_view
 
 
-    enum class States { RATE_BODY, REVIEW_BODY, THANKS_BODY }
+    enum class State { RATE_BODY, REVIEW_BODY, THANKS_BODY }
 
     /**
-     * Состояние Окна
+     * state windows
      */
-    private var status = States.RATE_BODY
+    private var status = State.RATE_BODY
         set(value) {
             field = value
             when (status) {
-                States.RATE_BODY -> {
+                State.RATE_BODY -> {
                     llRateBody.visibility = View.VISIBLE
                     llReviewBody.visibility = View.GONE
                     llThanksBody.visibility = View.GONE
                 }
-                States.REVIEW_BODY -> {
+                State.REVIEW_BODY -> {
                     llRateBody.visibility = View.GONE
                     llReviewBody.visibility = View.VISIBLE
                     llThanksBody.visibility = View.GONE
                 }
-                States.THANKS_BODY -> {
+                State.THANKS_BODY -> {
                     llRateBody.visibility = View.GONE
                     llReviewBody.visibility = View.GONE
                     llThanksBody.visibility = View.VISIBLE
@@ -68,50 +76,52 @@ class RatingDialogDialogFragment : DialogFragment() {
         }
 
     /**
-     * Сообщение написанное пользователем для разработчиков
+     * review
      */
     private lateinit var message: String
 
     /**
-     * оценка пользователя
+     * score
      */
-    private var score: Float = 0F
+    private var score: Int = 0
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
-        val builder = context?.let { AlertDialog.Builder(it, R.style.AlertDialog) }
-        val inflater = activity!!.layoutInflater
-        val view: View = inflater.inflate(R.layout.reting_dialog, null)
-        builder?.setView(view)
+        val inflater = activity?.layoutInflater
+        val view: View? = inflater?.inflate(R.layout.reting_dialog, null)
 
-        llRateBody = view.findViewById(R.id.rating_dialog_body_rate_linear_layout)
-        ratingBar = view.findViewById(R.id.rating_dialog_body_rate_ratingBar)
-        tvRateScore = view.findViewById(R.id.rating_dialog_body_rate_score_text_vew)
-        tvRateScore.visibility = View.GONE
-        bEvaluation = view.findViewById(R.id.rating_dialog_body_rate_evaluation_button)
-        tvEvaluationLate =
-            view.findViewById(R.id.rating_dialog_body_rate_evaluation_later_button_text_view)
-        llReviewBody = view.findViewById(R.id.rating_dialog_body_review_linear_layout)
-        llReviewBody.visibility = View.GONE
-        etReviewTyping = view.findViewById(R.id.rating_dialog_body_review_typing_text_edit_text)
-        bSendEvaluation = view.findViewById(R.id.rating_dialog_body_review_send_evaluation_button)
-        tvCloseReviewWindow =
-            view.findViewById(R.id.rating_dialog_body_review_close_window_text_view)
-        llThanksBody = view.findViewById(R.id.rating_dialog_thanks_layout_linear_layout)
-        llThanksBody.visibility = View.GONE
-        tvCloseThanksWindows = view.findViewById(R.id.rating_dialog_body_thanks_close_text_view)
+        view?.let {
+            llRateBody = it.findViewById(R.id.rating_dialog_body_rate_linear_layout)
+            ratingBar = it.findViewById(R.id.rating_dialog_body_rate_ratingBar)
+            tvRateScore = it.findViewById(R.id.rating_dialog_body_rate_score_text_vew)
+            tvRateScore.visibility = View.GONE
+            bEvaluation = it.findViewById(R.id.rating_dialog_body_rate_evaluation_button)
+            tvEvaluationLate =
+                it.findViewById(R.id.rating_dialog_body_rate_evaluation_later_button_text_view)
+            llReviewBody = it.findViewById(R.id.rating_dialog_body_review_linear_layout)
+            llReviewBody.visibility = View.GONE
+            etReviewTyping = it.findViewById(R.id.rating_dialog_body_review_typing_text_edit_text)
+            bSendEvaluation =
+                it.findViewById(R.id.rating_dialog_body_review_send_evaluation_button)
+            tvCloseReviewWindow =
+                it.findViewById(R.id.rating_dialog_body_review_close_window_text_view)
+            llThanksBody = it.findViewById(R.id.rating_dialog_thanks_layout_linear_layout)
+            llThanksBody.visibility = View.GONE
+            tvCloseThanksWindows = it.findViewById(R.id.rating_dialog_body_thanks_close_text_view)
+        }
+
+        val builder = AlertDialog.Builder(context!!, R.style.AlertDialog)
+        builder.setView(view)
 
         bEvaluation.setOnClickListener {
             when (ratingBar.rating) {
                 0F -> tvRateScore.visibility = View.VISIBLE
                 in 1F..3F -> {
-                    score = ratingBar.rating
-                    status = States.REVIEW_BODY
+                    score = ratingBar.rating.toInt()
+                    status = State.REVIEW_BODY
                 }
-                else -> {
-                    // метод для отправки рейтинга
-
-                    startActivity(Intent(Intent.ACTION_VIEW,
-                        Uri.parse("https://play.google.com/store/apps/details?id=ru.tns.tnsmobile")))
+                4F, 5F -> {
+                    score = ratingBar.rating.toInt()
+                    sendRating(score, null)
                 }
             }
         }
@@ -121,29 +131,93 @@ class RatingDialogDialogFragment : DialogFragment() {
                 message = etReviewTyping.toString()
 
                 // метод для отправки рейтинга
-
-                status = States.THANKS_BODY
+                sendRating(score, message)
+                status = State.THANKS_BODY
             } else {
                 etReviewTyping.let {
                     it.hint =
                         activity?.getString(R.string.rating_dialog_text_hint_body_review_edit_text)
-                        activity?.resources?.getColor(R.color.colorTextRed)
+                    activity?.resources?.getColor(R.color.colorTextRed)
                         ?.let { it1 -> it.setHintTextColor(it1) }
                 }
             }
         }
 
-
+        /**
+         * Send late
+         * void run to send to a server [score] = -1, we will put this dialog again, but late
+         */
         tvEvaluationLate.setOnClickListener {
             //Метод для формирования другой даты отзыва
+            score = -1
+            sendRating(score, null)
         }
-
+        /**
+         * close dialog
+         */
         tvCloseReviewWindow.setOnClickListener { dialog?.cancel() }
         tvCloseThanksWindows.setOnClickListener { dialog?.cancel() }
 
 
-        if (builder != null)
-            return builder.create()
-        return super.onCreateDialog(savedInstanceState)
+        return builder.create()
+    }
+
+    /**
+     * void send rating to server
+     */
+    private fun sendRating(score: Int, @Nullable message: String?) {
+        try {
+            //Метод отправки
+            //sendRatingVote(ls, score, message, apiCallbackSendRating)
+        } catch (e: Exception) {
+            e.printStackTrace()
+
+            if (score == 4 or 5)
+                startIntentToGooglePlay()
+
+            // Запускаем сервис что бы в фоне отправить данные, если данные не ушли
+            startRatingService(score, message)
+        }
+    }
+    /**
+    private var apiCallbackSendRating = Callback { result: Boolean, data: AddRatingVoteAnswerData? ->
+    when (score) {
+    -1 -> {
+    dialog?.cancel()
+    if (!result)
+    startRatingService(score, null)
+    }
+    in 1..3 -> {
+    status = State.THANKS_BODY
+    if (!result)
+    startRatingService(score, etReview.text.toString())
+    }
+    4, 5 -> {
+    startIntentToGooglePlay()
+    if (!result)
+    startRatingService(score, null)
+    }
+    }
+    }
+     */
+
+    /**
+     * run to GooglePlay
+     */
+    private fun startIntentToGooglePlay() {
+        val url = Uri.parse("https://play.google.com/store/apps/details?id=ru.tns.tnsmobile")
+        val openLinkIntent = Intent(Intent.ACTION_VIEW, url)
+        if (openLinkIntent.resolveActivity((activity as MainActivity).packageManager) != null) {
+            startActivity(openLinkIntent)
+        }
+        dialog?.cancel()
+    }
+    /**
+     * if we cannot send the rating, we run service
+     */
+    private fun startRatingService(score: Int, @Nullable message: String?) {
+        val ratingService = RatingService()
+        val intent = ratingService.newIntent(activity as MainActivity, score, message.toString())
+        (activity as MainActivity).startService(intent)
     }
 }
