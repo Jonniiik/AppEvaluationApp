@@ -22,7 +22,7 @@ class MainActivity : AppCompatActivity() {
         buttonDialogFragment.setOnClickListener {
             supportFragmentManager.inTransaction {
                 val ratingDialogFragment = RatingDialogFragment()
-                findFragment(RatingDialogFragment.RATING_DIALOG_TAG)
+                removeFragment(RatingDialogFragment.RATING_DIALOG_TAG)
                 ratingDialogFragment.show(supportFragmentManager, RatingDialogFragment.RATING_DIALOG_TAG)
             }
         }
@@ -30,7 +30,7 @@ class MainActivity : AppCompatActivity() {
         buttonRatingFragment.setOnClickListener {
             supportFragmentManager.inTransaction {
                 val ratingFragment = RatingFragment()
-                findFragment(RatingFragment.RATING_FRAGMENT_TAG)
+                removeFragment(RatingFragment.RATING_FRAGMENT_TAG)
                 replace(R.id.main_activity_fragment_container, ratingFragment)
             }
         }
@@ -39,7 +39,7 @@ class MainActivity : AppCompatActivity() {
     /**
      * Find fragment, if we have open fragment, we will close it
      */
-    private fun AppCompatActivity.findFragment(tag: String?){
+    private fun AppCompatActivity.removeFragment(tag: String?){
         supportFragmentManager.inTransaction {
             val prev: Fragment? = supportFragmentManager.findFragmentByTag(tag)
             if (prev != null) remove(prev)
