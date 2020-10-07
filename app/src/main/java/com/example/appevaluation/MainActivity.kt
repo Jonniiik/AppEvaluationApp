@@ -2,13 +2,16 @@ package com.example.appevaluation
 
 
 import android.os.Bundle
+import android.view.View
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
 
+
 lateinit var button: Button
+lateinit var button2: Button
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -16,8 +19,17 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         button = findViewById(R.id.main_activity_button_ration_dialog_fragment)
 
+        button2 = findViewById(R.id.main_activity_button_ration_dialog)
+
         button.setOnClickListener {
             openFragmentDialog()
+        }
+        button2.visibility = View.VISIBLE
+        button2.setOnClickListener {
+            supportFragmentManager.inTransaction {
+                val ratingFragment = RatingFragment()
+                replace(R.id.main_activity_fragment_container, ratingFragment)
+            }
         }
     }
 
