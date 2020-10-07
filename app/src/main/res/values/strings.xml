@@ -10,5 +10,7 @@
     <string name="rating_dialog_text_hint_body_review_edit_text">Напишите свои пожелания</string>
     <string name="rating_dialog_text_body_thanks_title_text_view">Спасибо!</string>
     <string name="rating_dialog_text_body_thanks_body_text_view">Мы передали ваши пожелания в отдел разработки.</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 </resources>

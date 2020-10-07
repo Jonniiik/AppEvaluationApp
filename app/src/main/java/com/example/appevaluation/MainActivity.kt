@@ -4,7 +4,6 @@ package com.example.appevaluation
 import android.os.Bundle
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
-import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
@@ -18,22 +17,22 @@ class MainActivity : AppCompatActivity() {
         button = findViewById(R.id.main_activity_button_ration_dialog_fragment)
 
         button.setOnClickListener {
-            openFragmentDialog(RatingDialogDialogFragment(), RatingDialogDialogFragment.RATING_DIALOG_TAG)
+            openFragmentDialog()
         }
     }
 
     /**
      * Find a good way, how i can open Fragment or DialogFragment on Kotlin
      */
-    private fun openFragmentDialog(dialogFragment: DialogFragment, tag: String) {
+    private fun openFragmentDialog() {
+        val ratingDialogDialogFragment = RatingDialogDialogFragment()
         val manager = supportFragmentManager
         manager.inTransaction {
             addToBackStack(null)
-            val prev: Fragment? =
-                supportFragmentManager.findFragmentByTag(tag)
+            val prev: Fragment? = supportFragmentManager.findFragmentByTag(RatingDialogDialogFragment.RATING_DIALOG_TAG)
             if (prev != null) remove(prev)
         }
-        dialogFragment.show(manager, tag)
+        ratingDialogDialogFragment.show(manager, RatingDialogDialogFragment.RATING_DIALOG_TAG)
     }
 
     private inline fun FragmentManager.inTransaction(func: FragmentTransaction.() -> Unit) {
