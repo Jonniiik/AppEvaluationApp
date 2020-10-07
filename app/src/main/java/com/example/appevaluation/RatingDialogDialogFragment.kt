@@ -3,10 +3,12 @@ package com.example.appevaluation
 import android.app.Dialog
 import android.content.Intent
 import android.net.Uri
+import android.os.Build
 import android.os.Bundle
 import android.view.View
 import android.widget.*
 import androidx.annotation.Nullable
+import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.DialogFragment
 
@@ -85,6 +87,7 @@ class RatingDialogDialogFragment : DialogFragment() {
      */
     private var score: Int = 0
 
+    @RequiresApi(Build.VERSION_CODES.M)
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         val inflater = activity?.layoutInflater
         val view: View? = inflater?.inflate(R.layout.reting_dialog, null)
@@ -136,10 +139,8 @@ class RatingDialogDialogFragment : DialogFragment() {
                 status = State.THANKS_BODY
             } else {
                 etReviewTyping.let {
-                    it.hint =
-                        activity?.getString(R.string.rating_dialog_text_hint_body_review_edit_text)
-                    activity?.resources?.getColor(R.color.colorTextRed)
-                        ?.let { it1 -> it.setHintTextColor(it1) }
+                    it.hint = activity?.getString(R.string.rating_dialog_text_hint_body_review_edit_text)
+                    it.setHintTextColor(activity?.resources?.getColor(R.color.colorTextRed, resources.newTheme())!!)
                 }
             }
         }
