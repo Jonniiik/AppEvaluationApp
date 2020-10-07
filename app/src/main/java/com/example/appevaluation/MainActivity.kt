@@ -18,14 +18,14 @@ class MainActivity : AppCompatActivity() {
         button = findViewById(R.id.main_activity_button_ration_dialog_fragment)
 
         button.setOnClickListener {
-            openRatingDialog(RatingDialogDialogFragment(), RatingDialogDialogFragment.RATING_DIALOG_TAG)
+            openFragmentDialog(RatingDialogDialogFragment(), RatingDialogDialogFragment.RATING_DIALOG_TAG)
         }
     }
 
     /**
      * Find a good way, how i can open Fragment or DialogFragment on Kotlin
      */
-    private fun openRatingDialog(dialogFragment: DialogFragment, tag: String) {
+    private fun openFragmentDialog(dialogFragment: DialogFragment, tag: String) {
         val manager = supportFragmentManager
         manager.inTransaction {
             addToBackStack(null)
