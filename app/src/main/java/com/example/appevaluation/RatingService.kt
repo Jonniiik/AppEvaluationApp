@@ -87,8 +87,7 @@ class RatingService : IntentService("RatingService") {
     }
 
     private fun isOnline(): Boolean {
-        val cm = getSystemService(CONNECTIVITY_SERVICE) as ConnectivityManager
-        val netInfo = cm.activeNetworkInfo
-        return netInfo != null && netInfo.isConnectedOrConnecting
+        val cm = getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+        return cm.isActiveNetworkMetered
     }
 }

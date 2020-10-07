@@ -122,6 +122,7 @@ class RatingDialogDialogFragment : DialogFragment() {
                 4F, 5F -> {
                     score = ratingBar.rating.toInt()
                     sendRating(score, null)
+                    startIntentToGooglePlay()
                 }
             }
         }
