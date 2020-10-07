@@ -28,6 +28,8 @@ class MainActivity : AppCompatActivity() {
         button2.setOnClickListener {
             supportFragmentManager.inTransaction {
                 val ratingFragment = RatingFragment()
+                val prev: Fragment? = supportFragmentManager.findFragmentByTag(RatingFragment.RATING_FRAGMENT_TAG)
+                if (prev != null) remove(prev)
                 replace(R.id.main_activity_fragment_container, ratingFragment)
             }
         }
