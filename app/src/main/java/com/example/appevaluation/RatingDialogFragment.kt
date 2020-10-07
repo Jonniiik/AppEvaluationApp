@@ -19,7 +19,7 @@ import androidx.fragment.app.DialogFragment
  * after [State.REVIEW_BODY] we open [State.THANKS_BODY]
  * if we put 4 to 5, run GooglePlay
  */
-class RatingDialogDialogFragment : DialogFragment() {
+class RatingDialogFragment : DialogFragment() {
 
     companion object {
         @JvmStatic

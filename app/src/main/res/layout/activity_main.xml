@@ -17,14 +17,14 @@
         android:orientation="vertical">
 
         <Button
-            android:id="@+id/main_activity_button_ration_dialog"
+            android:id="@+id/main_activity_button_rating_fragment"
             style="@style/buttonMain"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Ration Dialog" />
 
         <Button
-            android:id="@+id/main_activity_button_ration_dialog_fragment"
+            android:id="@+id/main_activity_button_rating_dialog_fragment"
             style="@style/buttonMain"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
