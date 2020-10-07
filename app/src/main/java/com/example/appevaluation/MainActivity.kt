@@ -2,7 +2,6 @@ package com.example.appevaluation
 
 
 import android.os.Bundle
-import android.view.View
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
@@ -10,22 +9,27 @@ import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
 
 
-lateinit var button: Button
-lateinit var button2: Button
+lateinit var buttonDialogFragment: Button
+lateinit var buttonRatingFragment: Button
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        button = findViewById(R.id.main_activity_button_ration_dialog_fragment)
+        buttonDialogFragment = findViewById(R.id.main_activity_button_ration_dialog_fragment)
+        buttonRatingFragment = findViewById(R.id.main_activity_button_ration_dialog)
 
-        button2 = findViewById(R.id.main_activity_button_ration_dialog)
-
-        button.setOnClickListener {
-            openFragmentDialog()
+        buttonDialogFragment.setOnClickListener {
+            supportFragmentManager.inTransaction {
+                val ratingDialogDialogFragment = RatingDialogDialogFragment()
+                addToBackStack(null)
+                val prev: Fragment? = supportFragmentManager.findFragmentByTag(RatingDialogDialogFragment.RATING_DIALOG_TAG)
+                if (prev != null) remove(prev)
+                ratingDialogDialogFragment.show(supportFragmentManager, RatingDialogDialogFragment.RATING_DIALOG_TAG)
+            }
         }
-        button2.visibility = View.VISIBLE
-        button2.setOnClickListener {
+
+        buttonRatingFragment.setOnClickListener {
             supportFragmentManager.inTransaction {
                 val ratingFragment = RatingFragment()
                 val prev: Fragment? = supportFragmentManager.findFragmentByTag(RatingFragment.RATING_FRAGMENT_TAG)
@@ -38,17 +42,6 @@ class MainActivity : AppCompatActivity() {
     /**
      * Find a good way, how i can open Fragment or DialogFragment on Kotlin
      */
-    private fun openFragmentDialog() {
-        val ratingDialogDialogFragment = RatingDialogDialogFragment()
-        val manager = supportFragmentManager
-        manager.inTransaction {
-            addToBackStack(null)
-            val prev: Fragment? = supportFragmentManager.findFragmentByTag(RatingDialogDialogFragment.RATING_DIALOG_TAG)
-            if (prev != null) remove(prev)
-        }
-        ratingDialogDialogFragment.show(manager, RatingDialogDialogFragment.RATING_DIALOG_TAG)
-    }
-
     private inline fun FragmentManager.inTransaction(func: FragmentTransaction.() -> Unit) {
         val fragmentTransaction = beginTransaction()
         fragmentTransaction.func()
