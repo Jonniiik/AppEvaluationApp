@@ -2,9 +2,74 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/colorPrimary"
+    android:layout_height="wrap_content"
     tools:context=".RatingFragment">
+
+    <androidx.cardview.widget.CardView xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:elevation="10dp"
+        android:gravity="center"
+        android:orientation="vertical"
+        app:cardCornerRadius="20dp">
+
+        <LinearLayout
+            android:id="@+id/rating_dialog_v2body_rate_linear_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/rating_dialog_v2"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <ImageView
+                android:id="@+id/rating_dialog_v2_body_rate_image_view"
+                android:layout_width="200dp"
+                android:layout_height="200dp"
+                android:gravity="center"
+                android:src="@drawable/zero_stars_v2" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:background="@drawable/rating_dialog"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <RatingBar
+                    android:id="@+id/rating_dialog_v2_body_rate_rating_dialog"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:numStars="5"
+                    android:stepSize="1"
+                    android:theme="@style/RatingBarGold" />
+
+                <TextView
+                    android:id="@+id/rating_dialog_v2_body_rate_result_text_text_view"
+                    style="@style/TextAppearance.AppCompat.Caption"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="16dp"
+                    android:text="@string/RatingDialog_v2_body_rate_first_star"
+                    android:textColor="@android:color/black"
+                    android:textSize="22sp" />
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/rating_dialog_v2_body_rate_rating_button"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_margin="16dp"
+                android:background="@drawable/button_view"
+                android:text="@string/rating_dialog_text_body_rate_button_evaluation_button"
+                android:textAllCaps="false"
+                android:textColor="@color/backgroundGold"
+                android:textSize="22sp" />
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
 
 
 </FrameLayout>

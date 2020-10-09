@@ -13,5 +13,7 @@
     <color name="colorGrayEditText">#E1E1E1</color>
     <color name="spoilerListBorder">#33000000</color>
     <color name="backgroundWhite">#FFFFFF</color>
+    <color name="backgroundGold">#8E7324</color>
+
 
 </resources>

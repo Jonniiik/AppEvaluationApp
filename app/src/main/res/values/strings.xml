@@ -13,4 +13,20 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
+    <!--RatingDialog-->
+    <string name="RatingDialog_body_rate_title"><![CDATA[Помогите нам стать лучше — \nоцените приложение]]></string>
+    <string name="RatingDialog_body_rate_1_to_5">Поставьте оценку от 1 до 5</string>
+    <string name="RatingDialog_body_rate_button_rating_later">Оценить позже</string>
+    <string name="RatingDialog_body_rate_button_rating">Оценить</string>
+    <string name="RatingDialog_body_review_title"><![CDATA[Что необходимо улучшить \nв приложении?]]></string>
+    <string name="RatingDialog_body_review_review">Напишите свои пожелания</string>
+    <string name="RatingDialog_body_thanks_title">Спасибо!</string>
+    <string name="RatingDialog_body_thanks_body">Мы передали ваши пожелания в отдел разработки.</string>
+
+    <string name="RatingDialog_v2_body_rate_first_star">Я ожидал большего!</string>
+    <string name="RatingDialog_v2_body_rate_second_star">Что то не очень!</string>
+    <string name="RatingDialog_v2_body_rate_third_star">Могла быть и лучше!</string>
+    <string name="RatingDialog_v2_body_rate_fourth_star">Еще бы чуть-чуть!</string>
+    <string name="RatingDialog_v2_body_rate_fifth_star">Вообще норм!</string>
+
 </resources>

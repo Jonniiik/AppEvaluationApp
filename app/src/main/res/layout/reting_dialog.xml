@@ -4,7 +4,7 @@
     android:layout_height="wrap_content"
     android:orientation="vertical"
     android:background="@drawable/rating_dialog"
-    android:paddingBottom="16dp">
+    android:padding="16dp">
 
     <LinearLayout
         android:id="@+id/rating_dialog_body_rate_linear_layout"
@@ -34,9 +34,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginLeft="40dp"
             android:layout_marginTop="20dp"
-            android:layout_marginRight="40dp"
             android:theme="@style/RatingBarGreen"
             android:numStars="5"
             android:stepSize="1" />

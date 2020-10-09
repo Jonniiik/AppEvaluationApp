@@ -13,9 +13,6 @@ import java.util.concurrent.TimeUnit
 
 class RatingService : IntentService("RatingService") {
 
-    private val SCORE_PATH = "SCORE_PATH"
-    private val MESSAGE_PATH = "MESSAGE_PATH"
-
     private var mHandler: Handler = Handler()
 
     //private var api: API? = null
@@ -26,12 +23,18 @@ class RatingService : IntentService("RatingService") {
     /**
      * every 3 hours we try to send rating
      */
-    private var POLL_INTERVAL_HOURS: Long = TimeUnit.MINUTES.toHours(3)
+    private var intervalSendTime: Long = TimeUnit.MINUTES.toHours(3)
 
-    fun newIntent(context: Context, score: Int, message: String): Intent? {
-        return Intent(context, RatingService::class.java)
-            .putExtra(SCORE_PATH, score)
-            .putExtra(MESSAGE_PATH, message)
+    companion object {
+
+        private const val SCORE_PATH = "SCORE_PATH"
+        private const val MESSAGE_PATH = "MESSAGE_PATH"
+
+        fun newIntent(context: Context, score: Int, message: String?): Intent? {
+            return Intent(context, RatingService::class.java)
+                .putExtra(SCORE_PATH, score)
+                .putExtra(MESSAGE_PATH, message)
+        }
     }
 
     override fun onHandleIntent(intent: Intent?) {
@@ -43,8 +46,6 @@ class RatingService : IntentService("RatingService") {
         try {
             //api?.sendRatingVote(api?.ls, score, message, apiCallbackSendRating)
             mHandler.post(DisplayToast(this, "Отправка Оценки на сервер началась"))
-            //Вставляю на всякий случай, если что то произошло и сервис повторной отправки запущен, мы его выключаем
-            serviceAlarm(this, false)
         } catch (e: Exception) {
             mHandler.post(DisplayToast(this, "Данные не отправились"))
             //Метод если не отправилиь данные сразу
@@ -71,13 +72,13 @@ class RatingService : IntentService("RatingService") {
      */
     private fun serviceAlarm(context: Context, isOn: Boolean) {
         if (isOnline()) {
-            val intent: Intent? = RatingService().newIntent(context, score, message.toString())
+            val intent: Intent? = newIntent(context, score, message)
             val pendingIntent = PendingIntent.getService(context, 0, intent!!, 0)
             val alarmManager = context.getSystemService(ALARM_SERVICE) as AlarmManager
             if (isOn) {
                 alarmManager.setRepeating(
                     AlarmManager.ELAPSED_REALTIME,
-                    SystemClock.elapsedRealtime(), POLL_INTERVAL_HOURS, pendingIntent
+                    SystemClock.elapsedRealtime(), intervalSendTime, pendingIntent
                 )
             } else {
                 alarmManager.cancel(pendingIntent)

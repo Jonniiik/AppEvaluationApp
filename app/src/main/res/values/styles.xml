@@ -82,8 +82,13 @@
 
     <!--Стиль RatingBar-->
     <style name="RatingBarGreen" parent="Theme.AppCompat">
-        <item name="colorControlNormal">@color/colorTextBlackDisable</item>
+        <item name="colorControlNormal">@color/colorTextGreen</item>
         <item name="colorControlActivated">@color/colorTextGreen</item>
+    </style>
+
+    <style name="RatingBarGold" parent="Theme.AppCompat">
+        <item name="colorControlNormal">@color/backgroundGold</item>
+        <item name="colorControlActivated">@color/backgroundGold</item>
     </style>
 
     <!--Стиль для AlertDialog-->

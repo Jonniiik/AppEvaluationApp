@@ -22,8 +22,7 @@ import androidx.fragment.app.DialogFragment
 class RatingDialogFragment : DialogFragment() {
 
     companion object {
-        @JvmStatic
-        val RATING_DIALOG_TAG = "RATING_DIALOG_TAG"
+        const val RATING_DIALOG_TAG = "RATING_DIALOG_TAG"
     }
 
     /**
@@ -218,8 +217,6 @@ class RatingDialogFragment : DialogFragment() {
      * if we cannot send the rating, we run service
      */
     private fun startRatingService(score: Int, @Nullable message: String?) {
-        val ratingService = RatingService()
-        val intent = ratingService.newIntent(activity as MainActivity, score, message.toString())
-        (activity as MainActivity).startService(intent)
+        (activity as MainActivity).startService(RatingService.newIntent(activity as MainActivity, score, message))
     }
 }
